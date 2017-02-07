@@ -4216,8 +4216,7 @@
 	    };
 
 	    _this.handleClick = _this.handleClick.bind(_this);
-	    _this.shouldMove = _this.shouldMove.bind(_this);
-	    _this.moveX = _this.moveX.bind(_this);
+
 	    return _this;
 	  }
 
@@ -4225,15 +4224,14 @@
 	    key: 'handleClick',
 	    value: function handleClick(event, coords) {
 
-	      if (this.shouldMove(coords) == 'x') this.moveX(coords);
-	      if (this.shouldMove(coords) == 'y') this.moveY(coords);
+	      var shouldMove = this.shouldMove(coords);
+	      if (shouldMove == 'x') this.moveX(coords);else if (shouldMove == 'y') this.moveY(coords);
 	    }
 	  }, {
 	    key: 'shouldMove',
 	    value: function shouldMove(coords) {
 
 	      if (coords.xIndex == this.state.zero.xIndex) return 'y';else if (coords.yIndex == this.state.zero.yIndex) return 'x';
-
 	      return null;
 	    }
 	  }, {
@@ -4287,10 +4285,26 @@
 	      });
 	    }
 	  }, {
+	    key: 'shuffle',
+	    value: function shuffle(numOfMoves) {
+
+	      var x = this.state.zero.xIndex;
+	      var y = this.state.zero.yIndex;
+
+	      var counter = 0;
+	      while (counter++ < numOfMoves) {
+	        if (Math.random() * (10 - 1) + 1 > 5) {
+	          this.moveX({ xIndex: x, yIndex: Math.random() * 3 });
+	        } else {
+	          this.moveY({ xIndex: Math.random() * 3, yIndex: y });
+	        }
+	      }
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 
-	      return _react2.default.createElement(_board2.default, { ids: this.state.ids, handleClick: this.handleClick });
+	      return _react2.default.createElement(_board2.default, { ids: this.state.ids, handleClick: this.handleClick, shuffle: this.shuffle });
 	    }
 	  }]);
 
@@ -4415,13 +4429,17 @@
 	      var style = {
 	        borderRadius: '5px',
 	        backgroundColor: '#75FF33',
-	        width: '8vh'
+	        width: '8vh',
+	        fontSize: '2em',
+	        fontFamily: 'Josefin Sans'
 	      };
 
 	      var style2 = {
 	        borderRadius: '5px',
 	        backgroundColor: '#33FF57',
-	        width: '8vh'
+	        width: '8vh',
+	        fontSize: '2em',
+	        fontFamily: 'Josefin Sans'
 	      };
 
 	      var none = {
@@ -4486,8 +4504,8 @@
 	    value: function render() {
 
 	      var style = {
-	        margin: '5vh auto 5vh auto',
-	        fontSize: '4em'
+	        margin: '5vh auto 3vh auto',
+	        fontSize: '5em'
 	      };
 
 	      return _react2.default.createElement(

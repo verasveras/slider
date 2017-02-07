@@ -6,8 +6,8 @@ export default class Header extends Component {
   render(){
 
     const style = {
-      margin: '5vh auto 5vh auto',
-      fontSize: '4em'
+      margin: '5vh auto 3vh auto',
+      fontSize: '5em'
     }
 
     return (<div style={style}>

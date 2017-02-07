@@ -11,14 +11,14 @@ export default class BoardContainer extends Component {
     }
 
     this.handleClick = this.handleClick.bind(this);
-    this.shouldMove = this.shouldMove.bind(this);
-    this.moveX = this.moveX.bind(this);
+
   }
 
   handleClick (event, coords) {
 
-    if (this.shouldMove(coords) == 'x') this.moveX(coords);
-    if (this.shouldMove(coords) == 'y') this.moveY(coords);
+    let shouldMove = this.shouldMove(coords)
+    if (shouldMove == 'x') this.moveX(coords);
+    else if (shouldMove == 'y') this.moveY(coords);
 
   }
 
@@ -26,7 +26,6 @@ export default class BoardContainer extends Component {
 
     if (coords.xIndex == this.state.zero.xIndex) return 'y';
     else if (coords.yIndex == this.state.zero.yIndex) return 'x';
-
     return null;
 
   }
@@ -86,9 +85,27 @@ export default class BoardContainer extends Component {
   }
 
 
+  shuffle(numOfMoves){
+
+    let x = this.state.zero.xIndex;
+    let y = this.state.zero.yIndex;
+
+    let counter = 0;
+    while (counter++ < numOfMoves) {
+      if (Math.random() * (10 - 1) + 1 > 5){
+        this.moveX({xIndex: x , yIndex: Math.random() * 3 });
+      }
+      else {
+        this.moveY({xIndex: Math.random() * 3, yIndex: y});
+      }
+    }
+
+
+  }
+
   render(){
 
-    return (<Board ids={this.state.ids} handleClick={this.handleClick}/>)
+    return (<Board ids={this.state.ids} handleClick={this.handleClick} shuffle={this.shuffle}/>)
 
   }
 

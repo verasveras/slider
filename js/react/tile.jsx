@@ -7,13 +7,17 @@ export default class Tile extends Component {
     const style = {
       borderRadius: '5px',
       backgroundColor: '#75FF33',
-      width: '8vh'
+      width: '8vh',
+      fontSize: '2em',
+      fontFamily: 'Josefin Sans'
     }
 
     const style2 = {
       borderRadius: '5px',
       backgroundColor: '#33FF57',
-      width: '8vh'
+      width: '8vh',
+      fontSize: '2em',
+      fontFamily: 'Josefin Sans'
     }
 
     const none = {
