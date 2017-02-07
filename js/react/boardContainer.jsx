@@ -90,20 +90,27 @@ export default class BoardContainer extends Component {
     let x = this.state.zero.xIndex;
     let y = this.state.zero.yIndex;
 
-    let counter = 0;
-    while (counter++ < 20) {
-      
-      let random = Math.floor(Math.random() * 3)
+    // let counter = 0;
+    // while (counter < 3) {
 
-      if (Math.random() * (10 - 1) + 1 > 5){
-        let coords = {xIndex: x , yIndex: random}
-        this.moveX(coords);
-      }
-      else {
-        let coords = {xIndex: random , yIndex: y}
-        this.moveY(coords);
-      }
-    }
+    //   let random = Math.floor(Math.random() * 3)
+
+    //   if (Math.random() * (10 - 1) + 1 > 5){
+    //     let coords = {xIndex: x , yIndex: random}
+    //     this.moveX(coords);
+    //   }
+    //   else {
+    //     let coords = {xIndex: random , yIndex: y}
+    //     this.moveY(coords);
+    //   }
+    // }
+
+      let random = Math.floor(Math.random() * 3);
+      random = random == x ? Math.floor(Math.random() * 3) : random;
+      let coords = {xIndex: x , yIndex: random};
+      this.moveY(coords);
+
+      counter++;
 
   }
 
