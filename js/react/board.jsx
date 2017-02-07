@@ -7,8 +7,8 @@ export default class Boards extends Component {
   render(){
 
   	const style = {
-  		width: '30vw',
-  		height: '30vw',
+  		width: '32vw',
+  		height: '32vw',
   		margin: 'auto auto',
   		border: '1px dashed black'
   	}

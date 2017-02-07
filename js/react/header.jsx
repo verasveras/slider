@@ -11,7 +11,7 @@ export default class Header extends Component {
     }
 
     return (<div style={style}>
-      Dogs!
+      Tomato
     </div>)
 
   }
