@@ -6,7 +6,6 @@ export default class Tile extends Component {
   render(){
 
     const style = {
-      // border: '1px solid black',
       borderRadius: '5px',
       backgroundColor: '#FFFFFF'
     }
@@ -15,7 +14,7 @@ export default class Tile extends Component {
       opacity: '0'
     }
 
-    return (<td style={this.props.id > 0? style : none}>
+    return (<td style={this.props.id > 0? style : none} onClick={(event) => {this.props.handleClick(event, this.props.coords)}}>
       {this.props.id}
     </td>)
 
