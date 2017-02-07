@@ -11,6 +11,7 @@ export default class BoardContainer extends Component {
     }
 
     this.handleClick = this.handleClick.bind(this);
+    this.shuffle = this.shuffle.bind(this);
 
   }
 
@@ -57,7 +58,6 @@ export default class BoardContainer extends Component {
   }
 
   moveY (coords) {
-
     
     let newIds = this.state.ids.slice();
 
@@ -85,21 +85,25 @@ export default class BoardContainer extends Component {
   }
 
 
-  shuffle(numOfMoves){
+  shuffle(){
 
     let x = this.state.zero.xIndex;
     let y = this.state.zero.yIndex;
 
     let counter = 0;
-    while (counter++ < numOfMoves) {
+    while (counter++ < 20) {
+      
+      let random = Math.floor(Math.random() * 3)
+
       if (Math.random() * (10 - 1) + 1 > 5){
-        this.moveX({xIndex: x , yIndex: Math.random() * 3 });
+        let coords = {xIndex: x , yIndex: random}
+        this.moveX(coords);
       }
       else {
-        this.moveY({xIndex: Math.random() * 3, yIndex: y});
+        let coords = {xIndex: random , yIndex: y}
+        this.moveY(coords);
       }
     }
-
 
   }
 

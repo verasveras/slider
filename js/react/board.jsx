@@ -6,14 +6,24 @@ export default class Boards extends Component {
 
   render(){
 
-  	const style = {
+  	const tableStyle = {
   		width: '32vw',
   		height: '32vw',
   		margin: 'auto auto',
   		border: '1px dashed black'
   	}
 
-    return (<table style={style}>
+    const buttonStyle = {
+      backgroundColor: '#DBFF33',
+      border: '0',
+      boxShadow: 'none',
+      border: '1px dashed black',
+      margin: '1vh auto',
+      fontSize: '2em'
+    }
+
+    return (<div>
+      <table style={tableStyle}>
     	<tbody>
 
 	    {this.props.ids.map((subArray, yIndex) => {
@@ -27,7 +37,9 @@ export default class Boards extends Component {
 	    })}
 
 	    </tbody>
-    </table>)
+    </table>
+    <button onClick={this.props.shuffle} style={buttonStyle}>Shuffle</button>
+    </div>)
 
   }
 
