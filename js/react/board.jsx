@@ -23,7 +23,6 @@ export default class Boards extends Component {
       fontFamily: 'Indie Flower'
     }
 
-    console.log(this.props.ids);
 
     return (<div>
       <div style={tableStyle}>

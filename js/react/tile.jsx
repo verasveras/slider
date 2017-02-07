@@ -14,7 +14,8 @@ export default class Tile extends Component {
       verticalAlign: 'middle',
       fontFamily: 'Josefin Sans',
       position: 'absolute',
-      margin: '0'
+      margin: '0',
+      lineHeight: '260%'
     }
 
     const none = {
