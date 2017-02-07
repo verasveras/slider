@@ -21788,29 +21788,75 @@
 	    };
 
 	    _this.handleClick = _this.handleClick.bind(_this);
+	    _this.shouldMove = _this.shouldMove.bind(_this);
+	    _this.moveX = _this.moveX.bind(_this);
 	    return _this;
 	  }
 
 	  _createClass(BoardContainer, [{
+	    key: 'handleClick',
+	    value: function handleClick(event, coords) {
+
+	      if (this.shouldMove(coords) == 'x') this.moveX(coords);
+	      if (this.shouldMove(coords) == 'y') this.moveY(coords);
+	    }
+	  }, {
 	    key: 'shouldMove',
 	    value: function shouldMove(coords) {
 
-	      var moveInfo = { shouldMove: false,
-	        axis: null };
+	      if (coords.xIndex == this.state.zero.xIndex) return 'y';else if (coords.yIndex == this.state.zero.yIndex) return 'x';
 
-	      if (coords.xIndex == this.state.zero.xIndex) {
-	        moveInfo.shouldMove = true, moveInfo.axis = 'y';
-	      } else if (coords.yIndex == this.state.zero.yIndex) {
-	        moveInfo.shouldMove = true, moveInfo.axis = 'x';
-	      }
-
-	      return moveInfo;
+	      return null;
 	    }
 	  }, {
-	    key: 'handleClick',
-	    value: function handleClick(event, coords) {
-	      console.log(event.target.innerHTML, coords);
-	      console.log(this.shouldMove(coords));
+	    key: 'moveX',
+	    value: function moveX(coords) {
+
+	      var newIds = this.state.ids.slice();
+
+	      if (this.state.zero.xIndex < coords.xIndex) {
+	        var i = this.state.zero.xIndex;
+	        for (; i < coords.xIndex; i++) {
+	          newIds[this.state.zero.yIndex][i] = newIds[this.state.zero.yIndex][i + 1];
+	        }
+	        newIds[this.state.zero.yIndex][i] = '0';
+	      } else {
+	        var _i = this.state.zero.xIndex;
+	        for (; _i > coords.xIndex; _i--) {
+	          newIds[this.state.zero.yIndex][_i] = newIds[this.state.zero.yIndex][_i - 1];
+	        }
+	        newIds[this.state.zero.yIndex][_i] = '0';
+	      }
+
+	      this.setState({
+	        ids: newIds,
+	        zero: coords
+	      });
+	    }
+	  }, {
+	    key: 'moveY',
+	    value: function moveY(coords) {
+
+	      var newIds = this.state.ids.slice();
+
+	      if (this.state.zero.yIndex < coords.yIndex) {
+	        var i = this.state.zero.yIndex;
+	        for (; i < coords.yIndex; i++) {
+	          newIds[i][this.state.zero.xIndex] = newIds[i + 1][this.state.zero.xIndex];
+	        }
+	        newIds[i][this.state.zero.xIndex] = '0';
+	      } else {
+	        var _i2 = this.state.zero.yIndex;
+	        for (; _i2 > coords.yIndex; _i2--) {
+	          newIds[_i2][this.state.zero.xIndex] = newIds[_i2 - 1][this.state.zero.xIndex];
+	        }
+	        newIds[_i2][this.state.zero.xIndex] = '0';
+	      }
+
+	      this.setState({
+	        ids: newIds,
+	        zero: coords
+	      });
 	    }
 	  }, {
 	    key: 'render',

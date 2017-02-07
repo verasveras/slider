@@ -11,30 +11,80 @@ export default class BoardContainer extends Component {
     }
 
     this.handleClick = this.handleClick.bind(this);
+    this.shouldMove = this.shouldMove.bind(this);
+    this.moveX = this.moveX.bind(this);
+  }
+
+  handleClick (event, coords) {
+
+    if (this.shouldMove(coords) == 'x') this.moveX(coords);
+    if (this.shouldMove(coords) == 'y') this.moveY(coords);
+
   }
 
   shouldMove(coords){
 
-    let moveInfo = {shouldMove: false,
-                    axis: null}
+    if (coords.xIndex == this.state.zero.xIndex) return 'y';
+    else if (coords.yIndex == this.state.zero.yIndex) return 'x';
 
-    if (coords.xIndex == this.state.zero.xIndex){
-        moveInfo.shouldMove = true,
-        moveInfo.axis = 'y'
-    }
+    return null;
 
-    else if (coords.yIndex == this.state.zero.yIndex){
-        moveInfo.shouldMove = true,
-        moveInfo.axis = 'x'
-    }
-
-    return moveInfo;
   }
 
-  handleClick (event, coords) {
-    console.log(event.target.innerHTML, coords);
-    console.log(this.shouldMove(coords));
+  moveX (coords) {
+
+    let newIds = this.state.ids.slice();
+
+    if (this.state.zero.xIndex < coords.xIndex) {
+      let i = this.state.zero.xIndex;
+      for (; i < coords.xIndex; i++){
+        newIds[this.state.zero.yIndex][i] = newIds[this.state.zero.yIndex][i+1];
+      }
+      newIds[this.state.zero.yIndex][i] = '0';
+    }
+    else {
+      let i = this.state.zero.xIndex;
+      for (; i > coords.xIndex; i--){
+        newIds[this.state.zero.yIndex][i] = newIds[this.state.zero.yIndex][i-1];
+      }
+      newIds[this.state.zero.yIndex][i] = '0';
+    }
+
+    this.setState({
+      ids: newIds,
+      zero: coords
+    })
+
   }
+
+  moveY (coords) {
+
+    
+    let newIds = this.state.ids.slice();
+
+    if (this.state.zero.yIndex < coords.yIndex) {
+      let i = this.state.zero.yIndex;
+      for (; i < coords.yIndex; i++){
+        newIds[i][this.state.zero.xIndex] = newIds[i+1][this.state.zero.xIndex];
+      }
+      newIds[i][this.state.zero.xIndex] = '0';
+    }
+    else {
+      let i = this.state.zero.yIndex;
+      for (; i > coords.yIndex; i--){
+        newIds[i][this.state.zero.xIndex] = newIds[i-1][this.state.zero.xIndex];
+      }
+      newIds[i][this.state.zero.xIndex] = '0';
+
+    } 
+
+    this.setState({
+      ids: newIds,
+      zero: coords
+    })
+
+  }
+
 
   render(){
 
