@@ -24,25 +24,27 @@ export default class Boards extends Component {
     }
 
 
-    return (<div>
-      <div style={tableStyle}>
+    return (
+      <div>
+        <div style={tableStyle}>
 
-	    {this.props.ids.map((subArray, yIndex) => {
+  	    {this.props.ids.map((subArray, yIndex) => {
 
-	    	return subArray.map((oneID, xIndex) => {
-          return (
-            <Tile id={oneID} 
-              coords={{xIndex, yIndex}} 
-              key={oneID} 
-              handleClick={this.props.handleClick}/>
-            )
-        })
+  	    	return subArray.map((oneID, xIndex) => {
+            return (
+              <Tile id={oneID} 
+                coords={{xIndex, yIndex}} 
+                key={oneID} 
+                handleClick={this.props.handleClick}/>
+              )
+          })
 
-	    })}
+  	    })}
 
-      </div>
-      <button onClick={this.props.shuffle} 
-              style={buttonStyle}>Shuffle</button>
+        </div>
+        <button onClick={this.props.shuffle} 
+                style={buttonStyle}>Shuffle
+        </button>
       </div>)
 
   }
