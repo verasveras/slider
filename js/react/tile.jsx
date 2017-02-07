@@ -4,34 +4,17 @@ export default class Tile extends Component {
 
   render(){
 
-    // x = # / 3
-    // y = 3 - # % 3 
-
-    const positions = {
-      // '0,0': 
-      // '0,1':
-      // '0,2': 
-      // '0,3':
-      // '1,0': 
-      // '1,1':
-      // '1,2': 
-      // '1,3':
-      // '2,0': 
-      // '2,1':
-      // '2,2': 
-      // '2,3':  
-      // '3,0': 
-      // '3,1':
-      // '3,2': 
-      // '3,3':     
-    }
-
     const style = {
       borderRadius: '5px',
       backgroundColor: '#75FF33',
+      height: '24%',
+      width: '24%',
       fontSize: '2em',
+      textAlign: 'center',
+      verticalAlign: 'middle',
       fontFamily: 'Josefin Sans',
-      position: 'absolute'
+      position: 'absolute',
+      margin: '0'
     }
 
     const none = {
@@ -43,8 +26,8 @@ export default class Tile extends Component {
       if (id == 0) return none;
       else {
         let style2 = Object.assign(style);
-        style.top = coords.yIndex * 100;
-        style.left = coords.xIndex * 100;
+        style.top = `${coords.yIndex * 25}%`;
+        style.left = `${coords.xIndex * 25}%`;
         return style2;
       }
 
