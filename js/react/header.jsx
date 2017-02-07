@@ -10,9 +10,11 @@ export default class Header extends Component {
       fontSize: '5em'
     }
 
-    return (<div style={style}>
-      Tomato
-    </div>)
+    return (
+    	<div style={style}>
+      	Tomato
+    	</div>
+    )
 
   }
 

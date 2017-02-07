@@ -5,10 +5,12 @@ import Header from './header';
 export default class Main extends Component {
 
   render(){
-    return (<div>
-    	<Header/>
-    	<BoardContainer/>
-    </div>)
+    return (
+    	<div>
+    		<Header/>
+    		<BoardContainer/>
+    	</div>
+    )
   }
 
 }

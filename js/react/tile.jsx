@@ -32,9 +32,12 @@ export default class Tile extends Component {
 
     }
 
-    return (<td style={getStyle(this.props.id)} onClick={(event) => {this.props.handleClick(event, this.props.coords)}}>
-      {this.props.id}
-    </td>)
+    return (
+      <div style={getStyle(this.props.id)}
+        onClick={(event) => {this.props.handleClick(event, this.props.coords)}}>
+        {this.props.id}
+      </div>
+    )
 
   }
 

@@ -22,24 +22,28 @@ export default class Boards extends Component {
       fontSize: '2em'
     }
 
+    console.log(this.props.ids);
+
     return (<div>
-      <table style={tableStyle}>
-    	<tbody>
+      <div style={tableStyle}>
 
 	    {this.props.ids.map((subArray, yIndex) => {
 
-	    	return (
-	    		<tr key={yIndex}>
-	    			{ subArray.map((oneID, xIndex) => <Tile id={oneID} coords={{xIndex, yIndex}} key={xIndex} handleClick={this.props.handleClick}/> ) }
-	    		</tr>
-		    ) 
+	    	return subArray.map((oneID, xIndex) => {
+          return (
+            <Tile id={oneID} 
+              coords={{xIndex, yIndex}} 
+              key={xIndex} 
+              handleClick={this.props.handleClick}/>
+            )
+        })
 
 	    })}
 
-	    </tbody>
-    </table>
-    <button onClick={this.props.shuffle} style={buttonStyle}>Shuffle</button>
-    </div>)
+      </div>
+      <button onClick={this.props.shuffle} 
+              style={buttonStyle}>Shuffle</button>
+      </div>)
 
   }
 

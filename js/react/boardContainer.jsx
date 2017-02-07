@@ -111,7 +111,11 @@ export default class BoardContainer extends Component {
 
   render(){
 
-    return (<Board ids={this.state.ids} handleClick={this.handleClick} shuffle={this.shuffle}/>)
+    return (
+      <Board ids={this.state.ids} 
+        handleClick={this.handleClick}
+        shuffle={this.shuffle}/>
+    )
 
   }
 
