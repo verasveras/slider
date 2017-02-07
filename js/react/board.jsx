@@ -10,7 +10,6 @@ export default class Boards extends Component {
   		width: '32vw',
   		height: '32vw',
   		margin: 'auto auto',
-  		border: '1px dashed black',
       position: 'relative'
   	}
 
@@ -20,7 +19,8 @@ export default class Boards extends Component {
       boxShadow: 'none',
       border: '1px dashed black',
       margin: '1vh auto',
-      fontSize: '2em'
+      fontSize: '2em',
+      fontFamily: 'Indie Flower'
     }
 
     console.log(this.props.ids);

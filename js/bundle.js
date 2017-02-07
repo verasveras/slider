@@ -4373,7 +4373,6 @@
 	        width: '32vw',
 	        height: '32vw',
 	        margin: 'auto auto',
-	        border: '1px dashed black',
 	        position: 'relative'
 	      };
 
@@ -4381,7 +4380,7 @@
 	        backgroundColor: '#DBFF33',
 	        border: '0',
 	        boxShadow: 'none'
-	      }, _defineProperty(_buttonStyle, 'border', '1px dashed black'), _defineProperty(_buttonStyle, 'margin', '1vh auto'), _defineProperty(_buttonStyle, 'fontSize', '2em'), _buttonStyle);
+	      }, _defineProperty(_buttonStyle, 'border', '1px dashed black'), _defineProperty(_buttonStyle, 'margin', '1vh auto'), _defineProperty(_buttonStyle, 'fontSize', '2em'), _defineProperty(_buttonStyle, 'fontFamily', 'Indie Flower'), _buttonStyle);
 
 	      console.log(this.props.ids);
 
