@@ -4308,7 +4308,7 @@
 	      // }
 
 	      var random = Math.floor(Math.random() * 3);
-	      random = random == x ? Math.floor(Math.random() * 3) : random;
+	      random = random == x ? Math.floor(Math.random() * 3 - 1) : random;
 	      var coords = { xIndex: x, yIndex: random };
 	      this.moveY(coords);
 

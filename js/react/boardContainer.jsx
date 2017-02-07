@@ -105,11 +105,6 @@ export default class BoardContainer extends Component {
     //   }
     // }
 
-      let random = Math.floor(Math.random() * 3);
-      random = random == x ? Math.floor(Math.random() * 3) : random;
-      let coords = {xIndex: x , yIndex: random};
-      this.moveY(coords);
-
       counter++;
 
   }
