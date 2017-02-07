@@ -4373,7 +4373,8 @@
 	        width: '32vw',
 	        height: '32vw',
 	        margin: 'auto auto',
-	        border: '1px dashed black'
+	        border: '1px dashed black',
+	        position: 'relative'
 	      };
 
 	      var buttonStyle = (_buttonStyle = {
@@ -4395,7 +4396,7 @@
 	            return subArray.map(function (oneID, xIndex) {
 	              return _react2.default.createElement(_tile2.default, { id: oneID,
 	                coords: { xIndex: xIndex, yIndex: yIndex },
-	                key: xIndex,
+	                key: oneID,
 	                handleClick: _this2.props.handleClick });
 	            });
 	          })
@@ -21888,20 +21889,34 @@
 	    value: function render() {
 	      var _this2 = this;
 
+	      // x = # / 3
+	      // y = 3 - # % 3 
+
+	      var positions = {
+	        // '0,0': 
+	        // '0,1':
+	        // '0,2': 
+	        // '0,3':
+	        // '1,0': 
+	        // '1,1':
+	        // '1,2': 
+	        // '1,3':
+	        // '2,0': 
+	        // '2,1':
+	        // '2,2': 
+	        // '2,3':  
+	        // '3,0': 
+	        // '3,1':
+	        // '3,2': 
+	        // '3,3':     
+	      };
+
 	      var style = {
 	        borderRadius: '5px',
 	        backgroundColor: '#75FF33',
-	        width: '8vh',
 	        fontSize: '2em',
-	        fontFamily: 'Josefin Sans'
-	      };
-
-	      var style2 = {
-	        borderRadius: '5px',
-	        backgroundColor: '#33FF57',
-	        width: '8vh',
-	        fontSize: '2em',
-	        fontFamily: 'Josefin Sans'
+	        fontFamily: 'Josefin Sans',
+	        position: 'absolute'
 	      };
 
 	      var none = {
@@ -21909,13 +21924,18 @@
 	        borderRadius: '5px'
 	      };
 
-	      function getStyle(id) {
-	        if (id == 0) return none;else if (id % 2 > 0) return style;else return style2;
+	      function getStyle(id, coords) {
+	        if (id == 0) return none;else {
+	          var style2 = Object.assign(style);
+	          style.top = coords.yIndex * 100;
+	          style.left = coords.xIndex * 100;
+	          return style2;
+	        }
 	      }
 
 	      return _react2.default.createElement(
 	        'div',
-	        { style: getStyle(this.props.id),
+	        { style: getStyle(this.props.id, this.props.coords),
 	          onClick: function onClick(event) {
 	            _this2.props.handleClick(event, _this2.props.coords);
 	          } },

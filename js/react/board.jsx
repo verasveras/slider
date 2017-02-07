@@ -10,7 +10,8 @@ export default class Boards extends Component {
   		width: '32vw',
   		height: '32vw',
   		margin: 'auto auto',
-  		border: '1px dashed black'
+  		border: '1px dashed black',
+      position: 'relative'
   	}
 
     const buttonStyle = {
@@ -33,7 +34,7 @@ export default class Boards extends Component {
           return (
             <Tile id={oneID} 
               coords={{xIndex, yIndex}} 
-              key={xIndex} 
+              key={oneID} 
               handleClick={this.props.handleClick}/>
             )
         })

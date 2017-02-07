@@ -6,8 +6,8 @@ export default class BoardContainer extends Component {
   constructor(){
     super();
     this.state = {
-        ids: [[0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11], [12, 13, 14, 15]],
-        zero: {xIndex: 0, yIndex: 0}
+      ids: [[0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11], [12, 13, 14, 15]],
+      zero: {xIndex: 0, yIndex: 0}
     }
 
     this.handleClick = this.handleClick.bind(this);
