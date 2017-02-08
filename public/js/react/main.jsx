@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import BoardContainer from './BoardContainer';
+import BoardContainer from './boardContainer';
 import Header from './header';
 
 export default class Main extends Component {

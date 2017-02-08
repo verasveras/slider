@@ -78,9 +78,9 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _BoardContainer = __webpack_require__(33);
+	var _boardContainer = __webpack_require__(183);
 
-	var _BoardContainer2 = _interopRequireDefault(_BoardContainer);
+	var _boardContainer2 = _interopRequireDefault(_boardContainer);
 
 	var _header = __webpack_require__(36);
 
@@ -110,7 +110,7 @@
 	        'div',
 	        null,
 	        _react2.default.createElement(_header2.default, null),
-	        _react2.default.createElement(_BoardContainer2.default, null)
+	        _react2.default.createElement(_boardContainer2.default, null)
 	      );
 	    }
 	  }]);
@@ -4175,154 +4175,7 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
 
 /***/ },
-/* 33 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(2);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _board = __webpack_require__(34);
-
-	var _board2 = _interopRequireDefault(_board);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var BoardContainer = function (_Component) {
-	  _inherits(BoardContainer, _Component);
-
-	  function BoardContainer() {
-	    _classCallCheck(this, BoardContainer);
-
-	    var _this = _possibleConstructorReturn(this, (BoardContainer.__proto__ || Object.getPrototypeOf(BoardContainer)).call(this));
-
-	    _this.state = {
-	      ids: [[0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11], [12, 13, 14, 15]],
-	      zero: { xIndex: 0, yIndex: 0 }
-	    };
-
-	    _this.handleClick = _this.handleClick.bind(_this);
-	    _this.shuffle = _this.shuffle.bind(_this);
-
-	    return _this;
-	  }
-
-	  _createClass(BoardContainer, [{
-	    key: 'handleClick',
-	    value: function handleClick(event, coords) {
-
-	      var shouldMove = this.shouldMove(coords);
-	      if (shouldMove == 'x') this.moveX(coords);else if (shouldMove == 'y') this.moveY(coords);
-	    }
-	  }, {
-	    key: 'shouldMove',
-	    value: function shouldMove(coords) {
-
-	      if (coords.xIndex == this.state.zero.xIndex) return 'y';else if (coords.yIndex == this.state.zero.yIndex) return 'x';
-	      return null;
-	    }
-	  }, {
-	    key: 'moveX',
-	    value: function moveX(coords) {
-
-	      var newIds = this.state.ids.slice();
-
-	      if (this.state.zero.xIndex < coords.xIndex) {
-	        var i = this.state.zero.xIndex;
-	        for (; i < coords.xIndex; i++) {
-	          newIds[this.state.zero.yIndex][i] = newIds[this.state.zero.yIndex][i + 1];
-	        }
-	        newIds[this.state.zero.yIndex][i] = '0';
-	      } else {
-	        var _i = this.state.zero.xIndex;
-	        for (; _i > coords.xIndex; _i--) {
-	          newIds[this.state.zero.yIndex][_i] = newIds[this.state.zero.yIndex][_i - 1];
-	        }
-	        newIds[this.state.zero.yIndex][_i] = '0';
-	      }
-
-	      this.setState({
-	        ids: newIds,
-	        zero: coords
-	      });
-	    }
-	  }, {
-	    key: 'moveY',
-	    value: function moveY(coords) {
-
-	      var newIds = this.state.ids.slice();
-
-	      if (this.state.zero.yIndex < coords.yIndex) {
-	        var i = this.state.zero.yIndex;
-	        for (; i < coords.yIndex; i++) {
-	          newIds[i][this.state.zero.xIndex] = newIds[i + 1][this.state.zero.xIndex];
-	        }
-	        newIds[i][this.state.zero.xIndex] = '0';
-	      } else {
-	        var _i2 = this.state.zero.yIndex;
-	        for (; _i2 > coords.yIndex; _i2--) {
-	          newIds[_i2][this.state.zero.xIndex] = newIds[_i2 - 1][this.state.zero.xIndex];
-	        }
-	        newIds[_i2][this.state.zero.xIndex] = '0';
-	      }
-
-	      this.setState({
-	        ids: newIds,
-	        zero: coords
-	      });
-	    }
-	  }, {
-	    key: 'shuffle',
-	    value: function shuffle() {
-
-	      var x = this.state.zero.xIndex;
-	      var y = this.state.zero.yIndex;
-
-	      // let counter = 0;
-	      // while (counter < 3) {
-
-	      //   let random = Math.floor(Math.random() * 3)
-
-	      //   if (Math.random() * (10 - 1) + 1 > 5){
-	      //     let coords = {xIndex: x , yIndex: random}
-	      //     this.moveX(coords);
-	      //   }
-	      //   else {
-	      //     let coords = {xIndex: random , yIndex: y}
-	      //     this.moveY(coords);
-	      //   }
-	      // }
-
-	      counter++;
-	    }
-	  }, {
-	    key: 'render',
-	    value: function render() {
-
-	      return _react2.default.createElement(_board2.default, { ids: this.state.ids, handleClick: this.handleClick, shuffle: this.shuffle });
-	    }
-	  }]);
-
-	  return BoardContainer;
-	}(_react.Component);
-
-	exports.default = BoardContainer;
-
-/***/ },
+/* 33 */,
 /* 34 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -21927,6 +21780,154 @@
 
 	module.exports = ReactDOMInvalidARIAHook;
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
+
+/***/ },
+/* 183 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(2);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _board = __webpack_require__(34);
+
+	var _board2 = _interopRequireDefault(_board);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var BoardContainer = function (_Component) {
+	  _inherits(BoardContainer, _Component);
+
+	  function BoardContainer() {
+	    _classCallCheck(this, BoardContainer);
+
+	    var _this = _possibleConstructorReturn(this, (BoardContainer.__proto__ || Object.getPrototypeOf(BoardContainer)).call(this));
+
+	    _this.state = {
+	      ids: [[0, 1, 2, 3], [4, 5, 6, 7], [8, 9, 10, 11], [12, 13, 14, 15]],
+	      zero: { xIndex: 0, yIndex: 0 }
+	    };
+
+	    _this.handleClick = _this.handleClick.bind(_this);
+	    _this.shuffle = _this.shuffle.bind(_this);
+
+	    return _this;
+	  }
+
+	  _createClass(BoardContainer, [{
+	    key: 'handleClick',
+	    value: function handleClick(event, coords) {
+
+	      var shouldMove = this.shouldMove(coords);
+	      if (shouldMove == 'x') this.moveX(coords);else if (shouldMove == 'y') this.moveY(coords);
+	    }
+	  }, {
+	    key: 'shouldMove',
+	    value: function shouldMove(coords) {
+
+	      if (coords.xIndex == this.state.zero.xIndex) return 'y';else if (coords.yIndex == this.state.zero.yIndex) return 'x';
+	      return null;
+	    }
+	  }, {
+	    key: 'moveX',
+	    value: function moveX(coords) {
+
+	      var newIds = this.state.ids.slice();
+
+	      if (this.state.zero.xIndex < coords.xIndex) {
+	        var i = this.state.zero.xIndex;
+	        for (; i < coords.xIndex; i++) {
+	          newIds[this.state.zero.yIndex][i] = newIds[this.state.zero.yIndex][i + 1];
+	        }
+	        newIds[this.state.zero.yIndex][i] = '0';
+	      } else {
+	        var _i = this.state.zero.xIndex;
+	        for (; _i > coords.xIndex; _i--) {
+	          newIds[this.state.zero.yIndex][_i] = newIds[this.state.zero.yIndex][_i - 1];
+	        }
+	        newIds[this.state.zero.yIndex][_i] = '0';
+	      }
+
+	      this.setState({
+	        ids: newIds,
+	        zero: coords
+	      });
+	    }
+	  }, {
+	    key: 'moveY',
+	    value: function moveY(coords) {
+
+	      var newIds = this.state.ids.slice();
+
+	      if (this.state.zero.yIndex < coords.yIndex) {
+	        var i = this.state.zero.yIndex;
+	        for (; i < coords.yIndex; i++) {
+	          newIds[i][this.state.zero.xIndex] = newIds[i + 1][this.state.zero.xIndex];
+	        }
+	        newIds[i][this.state.zero.xIndex] = '0';
+	      } else {
+	        var _i2 = this.state.zero.yIndex;
+	        for (; _i2 > coords.yIndex; _i2--) {
+	          newIds[_i2][this.state.zero.xIndex] = newIds[_i2 - 1][this.state.zero.xIndex];
+	        }
+	        newIds[_i2][this.state.zero.xIndex] = '0';
+	      }
+
+	      this.setState({
+	        ids: newIds,
+	        zero: coords
+	      });
+	    }
+	  }, {
+	    key: 'shuffle',
+	    value: function shuffle() {
+
+	      var x = this.state.zero.xIndex;
+	      var y = this.state.zero.yIndex;
+
+	      // let counter = 0;
+	      // while (counter < 3) {
+
+	      //   let random = Math.floor(Math.random() * 3)
+
+	      //   if (Math.random() * (10 - 1) + 1 > 5){
+	      //     let coords = {xIndex: x , yIndex: random}
+	      //     this.moveX(coords);
+	      //   }
+	      //   else {
+	      //     let coords = {xIndex: random , yIndex: y}
+	      //     this.moveY(coords);
+	      //   }
+	      // }
+
+	      counter++;
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+
+	      return _react2.default.createElement(_board2.default, { ids: this.state.ids, handleClick: this.handleClick, shuffle: this.shuffle });
+	    }
+	  }]);
+
+	  return BoardContainer;
+	}(_react.Component);
+
+	exports.default = BoardContainer;
 
 /***/ }
 /******/ ]);
