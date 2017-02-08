@@ -38,7 +38,6 @@ export default class Boards extends Component {
 
 	    </tbody>
     </table>
-    <button onClick={this.props.shuffle} style={buttonStyle}>Shuffle</button>
     </div>)
 
   }

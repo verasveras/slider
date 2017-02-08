@@ -85,30 +85,6 @@ export default class BoardContainer extends Component {
   }
 
 
-  shuffle(){
-
-    let x = this.state.zero.xIndex;
-    let y = this.state.zero.yIndex;
-
-    // let counter = 0;
-    // while (counter < 3) {
-
-    //   let random = Math.floor(Math.random() * 3)
-
-    //   if (Math.random() * (10 - 1) + 1 > 5){
-    //     let coords = {xIndex: x , yIndex: random}
-    //     this.moveX(coords);
-    //   }
-    //   else {
-    //     let coords = {xIndex: random , yIndex: y}
-    //     this.moveY(coords);
-    //   }
-    // }
-
-      counter++;
-
-  }
-
   render(){
 
     return (<Board ids={this.state.ids} handleClick={this.handleClick} shuffle={this.shuffle}/>)

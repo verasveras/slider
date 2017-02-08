@@ -4253,11 +4253,6 @@
 	              );
 	            })
 	          )
-	        ),
-	        _react2.default.createElement(
-	          'button',
-	          { onClick: this.props.shuffle, style: buttonStyle },
-	          'Shuffle'
 	        )
 	      );
 	    }
@@ -21891,30 +21886,6 @@
 	        ids: newIds,
 	        zero: coords
 	      });
-	    }
-	  }, {
-	    key: 'shuffle',
-	    value: function shuffle() {
-
-	      var x = this.state.zero.xIndex;
-	      var y = this.state.zero.yIndex;
-
-	      // let counter = 0;
-	      // while (counter < 3) {
-
-	      //   let random = Math.floor(Math.random() * 3)
-
-	      //   if (Math.random() * (10 - 1) + 1 > 5){
-	      //     let coords = {xIndex: x , yIndex: random}
-	      //     this.moveX(coords);
-	      //   }
-	      //   else {
-	      //     let coords = {xIndex: random , yIndex: y}
-	      //     this.moveY(coords);
-	      //   }
-	      // }
-
-	      counter++;
 	    }
 	  }, {
 	    key: 'render',
