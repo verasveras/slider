@@ -21818,7 +21818,6 @@
 	    };
 
 	    _this.handleClick = _this.handleClick.bind(_this);
-	    _this.shuffle = _this.shuffle.bind(_this);
 
 	    return _this;
 	  }

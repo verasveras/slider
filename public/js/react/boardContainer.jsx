@@ -11,7 +11,6 @@ export default class BoardContainer extends Component {
     }
 
     this.handleClick = this.handleClick.bind(this);
-    this.shuffle = this.shuffle.bind(this);
 
   }
 
