@@ -3,10 +3,10 @@ const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
 
 module.exports = {
-  entry: './js/react/index.jsx',
+  entry: './public/js/react/index.jsx',
   output: {
     path: __dirname,
-    filename: './js/bundle.js'
+    filename: './public/js/bundle.js'
   },
   watch: true,
   module: {
